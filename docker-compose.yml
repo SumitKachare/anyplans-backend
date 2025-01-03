@@ -1,0 +1,34 @@
+version: "3.9" # Specify the Docker Compose version
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: myuser # Set your Postgres username
+      POSTGRES_PASSWORD: mypassword # Set your Postgres password
+      POSTGRES_DB: mydatabase # Set your Postgres database name
+    ports:
+      - "5432:5432" # Map Postgres port to the host
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data across container restarts
+
+  redis:
+    image: redis # Use a lightweight Redis image
+    container_name: redis_container
+    restart: always
+    ports:
+      - "6379:6379" # Map Redis port to the host
+    volumes:
+      - redis_data:/data # Persist Redis data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres_data: # Named volume for Postgres
+  redis_data: # Named volume for Redis
