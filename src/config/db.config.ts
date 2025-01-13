@@ -1,13 +1,28 @@
-import { drizzle } from "drizzle-orm/node-postgres";
+import pg from "pg";
+import ENV from "./env.config";
 
-const db = drizzle(process.env.DATABASE_URL!);
+const { Pool } = pg;
 
-db.$client.connect((err) => {
-  if (err) {
-    console.log("Error Connecting DB");
-  }
-
-  console.log("Database connected");
+export const pool = new Pool({
+  connectionString: ENV.DATABASE_URL as string,
 });
 
-export default db;
+// test the db connection
+// pool
+//   .connect()
+//   .then((client) => {
+//     console.log("Database connected successfully");
+//     client.release(); // Release the client back to the pool
+//   })
+//   .catch((err) => {
+//     console.error("Database connection failed:", err.stack);
+//   });
+
+export const query = async (text: string, params?: any[]) => {
+  const res = await pool.query(text, params);
+
+  return res;
+};
+
+// DB Mate migration commands
+// https://github.com/amacneil/dbmate?tab=readme-ov-file#commands

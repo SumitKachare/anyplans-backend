@@ -110,7 +110,6 @@
   },
   "include": [
     "src/**/*.ts",       // Include TypeScript files in src/
-    "../drizzle.config.ts" // Optionally add specific files outside rootDir
   ],
   
 }

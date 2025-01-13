@@ -1,1 +1,0 @@
-ALTER TABLE "spots" DROP COLUMN "test";

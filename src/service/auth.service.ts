@@ -1,8 +1,6 @@
-import { and, eq, getTableColumns } from "drizzle-orm";
-import db from "../config/db.config";
-import { categoriesTable, usersTable } from "../db/schema";
 import { compare, hash } from "bcrypt";
 import { CustomError } from "../utils/error";
+import { query } from "../config/db.config";
 
 // register
 export const registerService = async (
@@ -12,12 +10,15 @@ export const registerService = async (
   bio: string
 ) => {
   // check if user with the mail exists
-  const isUserExist = await db
-    .select()
-    .from(usersTable)
-    .where(eq(usersTable.email, email));
+  const isUserExist = await query(
+    `
+    SELECT * from users 
+    WHERE email = $1
+    `,
+    [email]
+  );
 
-  if (isUserExist.length > 0) {
+  if (isUserExist && isUserExist?.rows?.length > 0) {
     throw new CustomError("Email already in use.", 409);
   }
 
@@ -25,37 +26,35 @@ export const registerService = async (
   const hashedPass = await hash(password, 10);
 
   // save the user in db
-  const user = await db
-    .insert(usersTable)
-    .values({
-      name,
-      email,
-      password: hashedPass,
-      bio,
-    })
-    .returning({
-      id: usersTable.id,
-      name: usersTable.name,
-      email: usersTable.email,
-      bio: usersTable.bio,
-    });
+  const user = await query(
+    `
+    INSERT INTO users (name , email , password , bio)
+    VALUES ($1 , $2 , $3 , $4)
+    returning id, name , email , bio
+    `,
+    [name, email, hashedPass, bio]
+  );
 
-  return user[0];
+  return user && user?.rows[0];
 };
 
 // login
 export const loginService = async (emailId: string, password: string) => {
   // get the user by email
-  const isUserExist = await db
-    .select()
-    .from(usersTable)
-    .where(eq(usersTable.email, emailId));
 
-  if (isUserExist.length !== 1) {
+  const isUserExist = await query(
+    `
+      SELECT * from users 
+      WHERE email = $1
+      `,
+    [emailId]
+  );
+
+  if (!isUserExist || isUserExist?.rows?.length === 0) {
     throw new CustomError("Invalid Credentials", 401);
   }
 
-  const user = isUserExist[0];
+  const user = isUserExist.rows[0];
 
   // compare the password using bcrypt
   const isPasswordMatch = await compare(password, user.password);

@@ -1,1 +1,0 @@
-ALTER TABLE "spots" ADD COLUMN "test" varchar(255);

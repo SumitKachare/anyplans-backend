@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express-serve-static-core";
-import { NODE_ENV } from "../config/env.config";
+import ENV from "../config/env.config";
 import { ZodError } from "zod";
 import { CustomError } from "../utils/error";
 import { DEVELOPMENT } from "../constants";
@@ -103,7 +103,7 @@ const errorHandler = (
     errorMessage: message,
   };
 
-  if (NODE_ENV === DEVELOPMENT) {
+  if (ENV.NODE_ENV === DEVELOPMENT) {
     response.stack = err.stack;
   }
 
