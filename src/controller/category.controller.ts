@@ -63,8 +63,6 @@ export const updateCategory = asyncHandler(
 
     const { userId } = req.user;
 
-    // check if the category exist else throw error [Pending]
-
     const data = await updateCategoryService(
       categoryId,
       userId,
