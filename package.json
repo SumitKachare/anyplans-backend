@@ -6,8 +6,8 @@
     "build": "npx tsc --build",
     "start": "node ./dist/index.js",
     "dev": "nodemon ./src/index.ts",
-    "db-seed": "npx ts-node ./src/db/seed.ts --seed",
-    "db-clear": "npx ts-node ./src/db/seed.ts --clear"
+    "db-seed": "npx dbmate up && npx ts-node ./src/db/seed.ts seed",
+    "db-clear": "npx dbmate drop"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +25,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.3.0",
+    "@faker-js/faker": "^9.4.0",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",

@@ -2,6 +2,7 @@ import express from "express";
 import authRoutes from "./auth.routes";
 import categoryRoutes from "./category.routes";
 import spotRoutes from "./spot.routes";
+import planRoutes from "./plan.routes";
 
 const router = express.Router();
 
@@ -18,6 +19,10 @@ const defaultRoutes = [
   {
     path: "/spot",
     routes: spotRoutes,
+  },
+  {
+    path: "/plan",
+    routes: planRoutes,
   },
 ];
 
