@@ -5,16 +5,16 @@ import {
   createPlanService,
   deletePlanService,
   updatePlanService,
-} from "../service/plan.service";
+} from "./plan.service";
 import {
   createPlanValidation,
   deletePlanValidation,
   getPlanDetailsValidation,
   getPlansValidation,
   updatePlanValidation,
-} from "../validation/plan.validation";
-import { asyncHandler } from "../utils/error";
-import { successResponse } from "../utils/utils";
+} from "./plan.validation";
+import { asyncHandler } from "../../utils/error";
+import { successResponse } from "../../utils/utils";
 
 export const getPlans = asyncHandler(async (req: Request, res: Response) => {
   const { city } = getPlansValidation.parse(req.query);

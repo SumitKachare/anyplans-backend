@@ -282,8 +282,8 @@ const runCommand = async () => {
         break;
       default:
         console.log("❌ Invalid command. Use one of the following:");
-        console.log("   node seed.ts seed");
-        console.log("   node seed.ts remove");
+        console.log("npm run db-seed");
+        console.log("npm run db-clear");
         break;
     }
   } catch (error) {

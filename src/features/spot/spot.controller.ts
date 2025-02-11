@@ -4,15 +4,15 @@ import {
   deleteSpotService,
   getAllSpotsByCategoryService,
   updateSpotService,
-} from "../service/spot.service";
+} from "./spot.service";
 import {
   createSpotValidation,
   deleteSpotValidation,
   updateSpotValidation,
   getSpotByCategoryValidation,
-} from "../validation/spot.validation";
-import { asyncHandler } from "../utils/error";
-import { successResponse } from "../utils/utils";
+} from "./spot.validation";
+import { asyncHandler } from "../../utils/error";
+import { successResponse } from "../../utils/utils";
 
 export const getSpots = asyncHandler(async (req: Request, res: Response) => {
   const categoryId = getSpotByCategoryValidation.parse(req.params);

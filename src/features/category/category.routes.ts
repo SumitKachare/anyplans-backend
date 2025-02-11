@@ -5,8 +5,8 @@ import {
   getCategories,
   getCategoryById,
   updateCategory,
-} from "../controller/category.controller";
-import { authCheck } from "../middleware/auth.middleware";
+} from "./category.controller";
+import { authCheck } from "../../middleware/auth.middleware";
 
 const router = express.Router();
 

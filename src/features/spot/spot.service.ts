@@ -1,6 +1,6 @@
-import { CustomError } from "../utils/error";
-import { getCategoryByIdService } from "./category.service";
-import { query } from "../config/db.config";
+import { CustomError } from "../../utils/error";
+import { getCategoryByIdService } from "../category/category.service";
+import { query } from "../../config/db.config";
 
 // get all spots
 export const getAllSpotsByCategoryService = async (

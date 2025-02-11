@@ -1,6 +1,6 @@
 import express from "express";
 import ENV from "./config/env.config";
-import baseRoute from "./route/routes";
+import baseRoute from "./routes";
 import errorHandler from "./middleware/error.middleware";
 import helmet from "helmet";
 import { CustomError } from "./utils/error";

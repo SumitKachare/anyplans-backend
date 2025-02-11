@@ -1,12 +1,12 @@
 import express from "express";
 
-import { authCheck } from "../middleware/auth.middleware";
+import { authCheck } from "../../middleware/auth.middleware";
 import {
   getSpots,
   createSpot,
   deleteSpot,
   updateSpot,
-} from "../controller/spot.controller";
+} from "./spot.controller";
 
 const router = express.Router();
 

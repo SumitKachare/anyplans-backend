@@ -1,6 +1,6 @@
 import { compare, hash } from "bcrypt";
-import { CustomError } from "../utils/error";
-import { query } from "../config/db.config";
+import { CustomError } from "../../utils/error";
+import { query } from "../../config/db.config";
 
 // register
 export const registerService = async (

@@ -1,11 +1,11 @@
-import { CustomError } from "../utils/error";
-import { query } from "../config/db.config";
+import { CustomError } from "../../utils/error";
+import { query } from "../../config/db.config";
 import {
   createPlanType,
   deletePlanType,
   updatePlanType,
-} from "../validation/plan.validation";
-import { Plan, PlanDeleted } from "../types/plan.types";
+} from "./plan.validation";
+import { Plan, PlanDeleted } from "./plan.types";
 
 export const getPlansService = async (city: string): Promise<Plan[]> => {
   const getPlansByCity = await query(

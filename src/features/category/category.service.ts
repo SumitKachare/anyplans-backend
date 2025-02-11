@@ -1,5 +1,5 @@
-import { CustomError } from "../utils/error";
-import { query } from "../config/db.config";
+import { CustomError } from "../../utils/error";
+import { query } from "../../config/db.config";
 
 // get all categories
 export const getAllCategoriesByUserService = async (userId: number) => {

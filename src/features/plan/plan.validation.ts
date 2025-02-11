@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CustomError } from "../utils/error";
+import { CustomError } from "../../utils/error";
 
 export const PlanDurationUnit = z.enum(["hours", "days", "weeks"]);
 

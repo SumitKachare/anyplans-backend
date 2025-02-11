@@ -5,15 +5,15 @@ import {
   getCategoryByIdService,
   getAllCategoriesByUserService,
   updateCategoryService,
-} from "../service/category.service";
+} from "./category.service";
 import {
   createCategoryValidation,
   deleteCategoryValidation,
   getCategoryByIdValidation,
   updateCategoryValidation,
-} from "../validation/category.validation";
-import { asyncHandler } from "../utils/error";
-import { successResponse } from "../utils/utils";
+} from "./category.validation";
+import { asyncHandler } from "../../utils/error";
+import { successResponse } from "../../utils/utils";
 
 export const getCategories = asyncHandler(
   async (req: Request, res: Response) => {

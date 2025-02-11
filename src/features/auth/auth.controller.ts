@@ -1,11 +1,8 @@
 import { NextFunction, Request, Response } from "express-serve-static-core";
-import { loginService, registerService } from "../service/auth.service";
-import { asyncHandler } from "../utils/error";
-import {
-  createUserValidation,
-  loginUserValidation,
-} from "../validation/auth.validation";
-import { successResponse } from "../utils/utils";
+import { loginService, registerService } from "./auth.service";
+import { asyncHandler } from "../../utils/error";
+import { createUserValidation, loginUserValidation } from "./auth.validation";
+import { successResponse } from "../../utils/utils";
 
 export const register = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {

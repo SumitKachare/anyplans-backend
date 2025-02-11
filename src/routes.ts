@@ -1,8 +1,8 @@
 import express from "express";
-import authRoutes from "./auth.routes";
-import categoryRoutes from "./category.routes";
-import spotRoutes from "./spot.routes";
-import planRoutes from "./plan.routes";
+import authRoutes from "./features/auth/auth.routes";
+import categoryRoutes from "./features/category/category.routes";
+import spotRoutes from "./features/spot/spot.routes";
+import planRoutes from "./features/plan/plan.routes";
 
 const router = express.Router();
 

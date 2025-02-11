@@ -5,8 +5,8 @@ import {
   getPlansById,
   updatePlan,
   deletePlan,
-} from "../controller/plan.controller";
-import { authCheck } from "../middleware/auth.middleware";
+} from "./plan.controller";
+import { authCheck } from "../../middleware/auth.middleware";
 
 const router = express.Router();
 
